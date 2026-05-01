@@ -1,0 +1,15 @@
+<h1>🎬 Detalle de Películas</h1>
+
+<div *ngIf="movie; else cargando">
+  <h2>{{ movie.title }}</h2>
+
+  <p><strong>Sinopsis:</strong> {{ movie.synopsis }}</p>
+
+  <p><strong>Año:</strong> {{ movie.year }}</p>
+
+  <a routerLink="/movies">⬅ Volver</a>
+</div>
+
+<ng-template #cargando>
+  <p>Cargando película...</p>
+</ng-template>

@@ -1,0 +1,9 @@
+<h1>🎬 Catálogo de Películas</h1>
+
+<ul>
+  <li *ngFor="let movie of movies">
+    <a [routerLink]="['/movie', movie.id]">
+      {{ movie.title }} ({{ movie.year }})
+    </a>
+  </li>
+</ul>
