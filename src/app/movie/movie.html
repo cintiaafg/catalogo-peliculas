@@ -13,3 +13,21 @@
 <ng-template #cargando>
   <p>Cargando película...</p>
 </ng-template>
+
+<div *ngIf="movie" class="card shadow p-4">
+
+  <h2 class="mb-3">{{ movie.title }}</h2>
+
+  <p><strong>Sinopsis:</strong> {{ movie.synopsis }}</p>
+
+  <p><strong>Año:</strong> {{ movie.year }}</p>
+
+  <a routerLink="/movies" class="btn btn-secondary mt-3">
+    ⬅ Volver
+  </a>
+
+</div>
+
+<div *ngIf="!movie">
+  <p>Cargando película...</p>
+</div>

@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    background-image: url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+body {
+  background: linear-gradient(to right, #141e30, #243b55);
+}/* You can add global styles to this file, and also import other style files */
