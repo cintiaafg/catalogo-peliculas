@@ -15,17 +15,23 @@ import { Observable } from 'rxjs';
 
 export class MovieService {
 
-  private apiURL = 'http://127.0.0.1:8000/api/movies';
+  private apiUrl = 'http://127.0.0.1:8000/api/movies';
 
   constructor(private http: HttpClient) {}
 
-  // Obtener todas las películas
   getMovies(): Observable<any> {
-    return this.http.get(this.apiURL);
+  return this.http.get(this.apiUrl);
   }
 
-  // Obtener película por ID
-  getMovie(id: number): Observable<any> {
-    return this.http.get(`${this.apiURL}/${id}`);
+  getMovie(id:number): Observable<any> {
+  return this.http.get(`${this.apiUrl}/${id}`);
   }
+
+  addMovie(movie:any): Observable<any> {
+  return this.http.post(this.apiUrl, movie);
+  }
+  updateMovie(id:number, movie:any): Observable<any> {
+  return this.http.put(`${this.apiUrl}/${id}`, movie);
+  }
+
 }
