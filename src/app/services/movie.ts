@@ -1,10 +1,3 @@
-/*import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root',
-})
-export class Movie {}*/
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -32,6 +25,9 @@ export class MovieService {
   }
   updateMovie(id:number, movie:any): Observable<any> {
   return this.http.put(`${this.apiUrl}/${id}`, movie);
+  }
+  deleteMovie(id: number): Observable<any> {
+  return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
 }

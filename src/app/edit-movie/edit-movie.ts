@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../services/movie';
 
 @Component({
@@ -11,39 +11,28 @@ import { MovieService } from '../services/movie';
   templateUrl: './edit-movie.html',
   styleUrl: './edit-movie.css'
 })
-
 export class EditMovie {
 
-  movie:any = {};
+  movie: any = {};
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private movieService: MovieService
   ) {}
 
   ngOnInit() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
 
-    const id = this.route.snapshot.params['id'];
-
-    this.movieService.getMovie(id).subscribe((data) => {
+    this.movieService.getMovie(id).subscribe((data: any) => {
       this.movie = data;
     });
-
   }
 
   updateMovie() {
-
-this.movieService.updateMovie(this.movie.id, this.movie)
-  .subscribe({
-    next: (response: any) => {
-      console.log(response);
-      alert('Película actualizada');
-    },
-
-    error: (err: any) => {
-      console.log(err);
-    }
-  });
-
+    this.movieService.updateMovie(this.movie.id, this.movie).subscribe(() => {
+      alert('Película actualizada correctamente');
+      this.router.navigate(['/movie', this.movie.id]);
+    });
   }
 }

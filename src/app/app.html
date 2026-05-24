@@ -1,47 +1,21 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- <router-outlet></router-outlet> -->
-<div class="bg-dark text-white min-vh-100">
+<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+  <div class="container">
 
-  <div class="container py-4">
-
-    <!-- HEADER -->
-    <div class="row align-items-center mb-4">
-      <div class="col-md-2">
-        <img src="https://cdn-icons-png.flaticon.com/512/744/744922.png"
-             class="img-fluid" width="100">
-      </div>
-      <div class="col-md-10">
-        <h1>🎬 Catálogo de Películas</h1>
-      </div>
-    </div>
-
-    <!-- DESCRIPCIÓN -->
-    <p class="lead">
-      Bienvenido al catálogo de películas. Aquí podrás explorar una colección de películas.
-    </p>
-
-   <a routerLink="/movies" class="btn btn-primary">
-      Ver catálogo
+    <a class="navbar-brand" routerLink="/">
+      🎬 
     </a>
 
-    <!-- SOLO ESTO CARGA LAS PÁGINAS -->
-    <router-outlet></router-outlet>
+    <div class="navbar-nav">
+      <a class="nav-link" routerLink="/">
+        Inicio
+      </a>
+
+      <a class="nav-link" routerLink="/movies">
+        Catálogo
+      </a>
+    </div>
 
   </div>
+</nav>
 
-  <!-- FOOTER -->
-  <footer class="bg-black text-center py-3">
-    <p>Materia: Conceptualización de entornos de desarrollo de aplicaciones y servicios</p>
-    <p>Nombre: Cintia Aquetzalli Flores Guadarrama</p>
-    <p>Código: 223983613</p>
-    <p>Correo: cintia.flores8361@alumnos.udg.mx</p>
-  </footer>
-
-</div>
+<router-outlet></router-outlet>

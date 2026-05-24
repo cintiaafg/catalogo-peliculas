@@ -1,33 +1,43 @@
-<h1>🎬 Detalle de Películas</h1>
+<div class="container mt-4 text-white">
 
-<div *ngIf="movie; else cargando">
-  <h2>{{ movie.title }}</h2>
+  <h2 class="mb-4">🎬 Detalle de película</h2>
 
-  <p><strong>Sinopsis:</strong> {{ movie.synopsis }}</p>
+  <div *ngIf="movie; else cargando" class="card bg-dark text-white shadow p-4">
 
-  <p><strong>Año:</strong> {{ movie.year }}</p>
+    <div class="row">
 
-  <a routerLink="/movies">⬅ Volver</a>
-</div>
+      <div class="col-md-4">
+        <img 
+          [src]="movie.cover" 
+          class="img-fluid rounded" 
+          alt="Cover">
+      </div>
 
-<ng-template #cargando>
-  <p>Cargando película...</p>
-</ng-template>
+      <div class="col-md-8">
+        <h3>{{ movie.title }}</h3>
 
-<div *ngIf="movie" class="card shadow p-4">
+        <p><strong>Sinopsis:</strong> {{ movie.synopsis }}</p>
+        <p><strong>Año:</strong> {{ movie.year }}</p>
 
-  <h2 class="mb-3">{{ movie.title }}</h2>
+        <a [routerLink]="['/edit-movie', movie.id]" class="btn btn-warning me-2">
+          Editar
+        </a>
 
-  <p><strong>Sinopsis:</strong> {{ movie.synopsis }}</p>
+        <button (click)="deleteMovie()" class="btn btn-danger me-2">
+          Eliminar
+        </button>
 
-  <p><strong>Año:</strong> {{ movie.year }}</p>
+        <a routerLink="/movies" class="btn btn-secondary">
+          Regresar al catálogo
+        </a>
+      </div>
 
-  <a routerLink="/movies" class="btn btn-secondary mt-3">
-    ⬅ Volver
-  </a>
+    </div>
 
-</div>
+  </div>
 
-<div *ngIf="!movie">
-  <p>Cargando película...</p>
+  <ng-template #cargando>
+    <p>Cargando película..</p>
+  </ng-template>
+
 </div>

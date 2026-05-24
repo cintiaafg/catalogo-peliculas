@@ -1,16 +1,7 @@
-/*import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-add-movie',
-  imports: [],
-  templateUrl: './add-movie.html',
-  styleUrl: './add-movie.css',
-})
-export class AddMovie {}*/
-
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MovieService } from '../services/movie';
 
 @Component({
@@ -20,27 +11,24 @@ import { MovieService } from '../services/movie';
   templateUrl: './add-movie.html',
   styleUrl: './add-movie.css'
 })
-
 export class AddMovie {
 
   movie = {
     title: '',
     synopsis: '',
-    year: '',
-    cover: ''
+    cover: '',
+    year: ''
   };
 
-  constructor(private movieService: MovieService) {}
+  constructor(
+    private movieService: MovieService,
+    private router: Router
+  ) {}
 
   saveMovie() {
-    this.movieService.addMovie(this.movie).subscribe({
-      next: (data) => {
-        console.log('Película agregada', data);
-        alert('Película agregada correctamente');
-      },
-      error: (error) => {
-        console.log(error);
-      }
+    this.movieService.addMovie(this.movie).subscribe(() => {
+      alert('Película agregada correctamente');
+      this.router.navigate(['/movies']);
     });
   }
 }
